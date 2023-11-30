@@ -1,0 +1,66 @@
+/* Import Poppins fonts */
+
+@font-face {
+    font-family: 'Kanit-Regular';
+    src: url(../fonts/Kanit-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Kanit-Medium';
+    src: url(../fonts/Kanit-Medium.ttf);
+}
+
+@font-face {
+    font-family: 'Kanit-Bold';
+    src: url(../fonts/Kanit-Bold.ttf);
+}
+
+* {
+    padding: 0;
+    font-family: 'Kanit-Regular' !important;
+}
+
+.navbar {
+    background-color: #FFF;
+    /* border: 1px solid #eee; */
+}
+
+.navbar .navbar-brand {
+    font-family: 'Kanit-Bold' !important;
+    font-size: 30px;
+    color: #52734D;
+    /* margin: 0; */
+    padding: 0 15px;
+}
+
+.navbar .navbar-collapse ul li {
+    margin: 0 20px;
+}
+
+.navbar .navbar-collapse ul li a {
+    /* padding: 0; */
+    padding-bottom: 5px;
+    color: #000000;
+}
+
+.navbar .navbar-collapse ul li a.active {
+    border-bottom: 2px solid #52734D;
+    /* color: #000000; */
+}
+
+.navbar .navbar-collapse ul li a:hover {
+    border-bottom: 2px solid #52734D;
+}
+
+#iconupload {
+    color: #e5252a;
+    font-size: 22px;
+}
+
+.page-header {
+    position: relative;
+    background-image: url(../images/primary-bg.svg);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+}
