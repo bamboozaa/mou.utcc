@@ -31,7 +31,7 @@
                         <li class="breadcrumb-item active" aria-current="page">User Profile</li>
                     </ol>
                 </nav>
-                <div class="card">
+                <div class="card bg-white">
                     <div class="card-header"><i class="bi bi-person-badge fs-5"></i>{{ __(' User Profile') }}</div>
 
                     <div class="card-body">

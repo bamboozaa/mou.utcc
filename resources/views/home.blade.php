@@ -2,14 +2,14 @@
 
 @section('importcss')
     @parent
-    {{ Html::style('css/main2.css') }}
+    {{ Html::style('css/custom.css') }}
 @stop
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card bg-white">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">

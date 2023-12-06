@@ -64,28 +64,34 @@
                             <li class="nav-item">
                                 <a class="nav-link text-nowrap {{ request()->routeIs('home') ? 'active' : '' }}"
                                     aria-current="page" href="{{ url('/home') }}">
-                                    <i class="bi bi-house-door fs-4"></i>
+                                    <i class="bi bi-house-door fs-5"></i>
                                     {{ __('Home') }}
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-nowrap {{ request()->routeIs('mous.*') ? 'active' : '' }}"
                                     href="{{ url('mous') }}">
-                                    <i class="bi bi-clipboard-check fs-4"></i>
+                                    <i class="bi bi-clipboard-check fs-5"></i>
                                     {{ __('MOU') }}
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-nowrap {{ request()->routeIs('departments.*') ? 'active' : '' }}"
                                     href="{{ url('departments') }}">
-                                    <i class="bi bi-diagram-2 fs-4"></i>
+                                    <i class="bi bi-diagram-2 fs-5"></i>
                                     {{ __('Departments') }}
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-nowrap {{ request()->routeIs('users.*') ? 'active' : '' }}"
+                                    href="{{ url('users') }}">
+                                    <i class="bi bi-people fs-5"></i>
+                                    {{ __('Users') }}
+                                </a>
+                            </li>
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle {{ request()->routeIs('users.*') ? 'active' : '' }}" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <i class="bi bi-person fs-4"></i> {{ Auth::user()->name }}
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <i class="bi bi-person fs-5"></i> {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

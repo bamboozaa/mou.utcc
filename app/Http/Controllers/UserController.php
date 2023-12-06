@@ -15,7 +15,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        // Display a list of users
+        $users = User::all();
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -47,9 +49,11 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        //
+        // Show the form to edit a user
+        // $user = User::findOrFail($id);
+        return view('users.edit', compact('user'));
     }
 
     /**

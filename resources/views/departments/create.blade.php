@@ -24,16 +24,25 @@
             </div>
         </div>
 
-        <form method="POST" action="{{ route('departments.store') }}">
-            @csrf
+        <div class="card bg-white">
+            <div class="card-header">{{ __('Create Department') }}</div>
+            <div class="card-body">
+                <form method="POST" action="{{ route('departments.store') }}">
+                    @csrf
 
-            <div class="form-group">
-                <label for="name">Department Name:</label>
-                <input type="text" name="dep_name" id="dep_name" class="form-control my-3" required>
+                    <div class="mb-3 row">
+                        <label for="dep_name" class="col-sm-2 col-form-label">{{ __('Department Name :') }}</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="dep_name" id="dep_name" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Create Department</button>
+                </form>
             </div>
+        </div>
 
-            <button type="submit" class="btn btn-primary">Create Department</button>
-        </form>
+
     </div>
 @endsection
 
