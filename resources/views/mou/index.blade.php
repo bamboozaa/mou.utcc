@@ -51,7 +51,10 @@
                                 <th scope="col" class="text-nowrap">วันที่ประกาศ</th>
                                 <th scope="col" class="text-nowrap">วันสิ้นสุด</th>
                                 <th scope="col" class="text-nowrap text-center">Download</th>
-                                <th scope="col" class="text-nowrap text-center">Action</th>
+                                @if (Auth::user()->role === 1)
+                                    <th scope="col" class="text-nowrap text-center">Action</th>
+                                @endif
+
                             </tr>
                         </thead>
                         <tbody>
@@ -65,13 +68,14 @@
                                         <td>{{ \Carbon\Carbon::parse($MOU->end_date)->format('d/m/Y') }}</td>
                                         <td class="text-center"><a href="{{ url('uploads/' . $MOU->file_path) }}"
                                                 target="_blank"><i id="iconupload" class="bi bi-filetype-pdf"></i></a></td>
-                                        <td class="text-center text-nowrap">
-                                            <a href="{{ route('mous.show', $MOU->mou_id) }}"
-                                                class="btn btn-info btn-sm">Info</a>
-                                            <a href="{{ route('mous.edit', $MOU->mou_id) }}"
-                                                class="btn btn-warning btn-sm">Edit</a>
-
-                                        </td>
+                                        @if (Auth::user()->role === 1)
+                                            <td class="text-center text-nowrap">
+                                                <a href="{{ route('mous.show', $MOU->mou_id) }}"
+                                                    class="btn btn-info btn-sm">Info</a>
+                                                <a href="{{ route('mous.edit', $MOU->mou_id) }}"
+                                                    class="btn btn-warning btn-sm">Edit</a>
+                                            </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             @else

@@ -50,7 +50,10 @@
                                 <th scope="col" class="text-center text-nowrap">{{ __('No.') }}</th>
                                 <th scope="col" class="text-nowrap">{{ __('ชื่อผู้ใช้งาน') }}</th>
                                 <th scope="col" class="text-nowrap">{{ __('หน่วยงาน') }}</th>
-                                <th scope="col" class="text-center">{{ __('Actions') }}</th>
+                                <th scope="col" class="text-nowrap">{{ __('สิทธิ์การใช้งาน') }}</th>
+                                @if (Auth::user()->role === 1)
+                                    <th scope="col" class="text-center">{{ __('Actions') }}</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -69,22 +72,25 @@
                                             @endphp
                                             {{ $department }}
                                         </td>
-                                        <td class="text-center text-nowrap">
-                                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                            {{-- <form action="{{ route('users.destroy', $user->id) }}"
-                                                method="POST" style="display: inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm"
-                                                    onclick="return confirm('Are you sure you want to delete this department?')">Delete</button>
-                                            </form> --}}
+                                        <td>
+                                            @if ($user->role === 0)
+                                                {{ __('ผู้ใช้งานระบบ') }}
+                                            @elseif ($user->role === 1)
+                                                {{ __('ผู้ดูแลระบบ') }}
+                                            @endif
                                         </td>
+                                        @if (Auth::user()->role === 1)
+                                            <td class="text-center text-nowrap">
+                                                <a href="{{ route('users.edit', $user->id) }}"
+                                                    class="btn btn-warning btn-sm">Edit</a>
+                                            </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             @else
-                            <tr>
-                                <td colspan="4">{{ __('ไม่พบข้อมูลที่ท่านต้องการค้นหาในขณะนี้') }}</td>
-                            </tr>
+                                <tr>
+                                    <td colspan="4">{{ __('ไม่พบข้อมูลที่ท่านต้องการค้นหาในขณะนี้') }}</td>
+                                </tr>
                             @endif
 
                         </tbody>

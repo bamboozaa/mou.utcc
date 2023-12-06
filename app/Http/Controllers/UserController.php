@@ -59,15 +59,22 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->update([
+                'role' => $request->input('role'),
+                // Update other fields as needed
+        ]);
+
+        session()->flash('success', 'User updated successfully.');
+
+        return redirect()->route('users.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
         //
     }
