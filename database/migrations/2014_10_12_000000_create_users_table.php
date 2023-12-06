@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('objectguid')->nullable();
             $table->string('name');
+            $table->string('fullname');
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('department');

@@ -64,35 +64,38 @@
                             <li class="nav-item">
                                 <a class="nav-link text-nowrap {{ request()->routeIs('home') ? 'active' : '' }}"
                                     aria-current="page" href="{{ url('/home') }}">
-                                    <i class="bi bi-house-door"></i>
-                                    Home
+                                    <i class="bi bi-house-door fs-4"></i>
+                                    {{ __('Home') }}
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-nowrap {{ request()->routeIs('mous.*') ? 'active' : '' }}"
                                     href="{{ url('mous') }}">
-                                    <i class="bi bi-clipboard-check"></i>
-                                    MOU
+                                    <i class="bi bi-clipboard-check fs-4"></i>
+                                    {{ __('MOU') }}
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-nowrap {{ request()->routeIs('departments.*') ? 'active' : '' }}"
                                     href="{{ url('departments') }}">
-                                    <i class="bi bi-diagram-2"></i>
-                                    Departments
+                                    <i class="bi bi-diagram-2 fs-4"></i>
+                                    {{ __('Departments') }}
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle {{ request()->routeIs('users.*') ? 'active' : '' }}" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <i class="bi bi-person"></i> {{ Auth::user()->name }}
+                                    <i class="bi bi-person fs-4"></i> {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('users.show', Auth::user()->id) }}">
+                                        <i class="bi bi-person-badge fs-sm"></i>{{ __(' User Profile') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        <i class="bi bi-box-arrow-right"></i> {{ __('Logout') }}
+                                        <i class="bi bi-box-arrow-right fs-sm"></i> {{ __(' Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
