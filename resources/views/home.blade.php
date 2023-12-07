@@ -95,8 +95,8 @@
             </div>
             <div class="col-12 col-lg-6 col-xl">
 
-                {{-- <!-- Hours -->
-                <div class="card">
+                <!-- Hours -->
+                <div class="card bg-white">
                     <div class="card-body">
                         <div class="row align-items-center gx-0">
                             <div class="col">
@@ -115,18 +115,19 @@
                             <div class="col-auto">
 
                                 <!-- Icon -->
-                                <span class="h2 fe fe-briefcase text-body-secondary mb-0"></span>
+                                <i class="fs-4 bi bi-briefcase text-body-secondary mb-0"></i>
+                                {{-- <span class="h2 fe fe-briefcase text-body-secondary mb-0"></span> --}}
 
                             </div>
                         </div> <!-- / .row -->
                     </div>
-                </div> --}}
+                </div>
 
             </div>
             <div class="col-12 col-lg-6 col-xl">
 
-                {{-- <!-- Exit -->
-                <div class="card">
+                <!-- Exit -->
+                <div class="card bg-white">
                     <div class="card-body">
                         <div class="row align-items-center gx-0">
                             <div class="col">
@@ -153,13 +154,13 @@
                             </div>
                         </div> <!-- / .row -->
                     </div>
-                </div> --}}
+                </div>
 
             </div>
             <div class="col-12 col-lg-6 col-xl">
 
-                {{-- <!-- Time -->
-                <div class="card">
+                <!-- Time -->
+                <div class="card bg-white">
                     <div class="card-body">
                         <div class="row align-items-center gx-0">
                             <div class="col">
@@ -178,12 +179,13 @@
                             <div class="col-auto">
 
                                 <!-- Icon -->
-                                <span class="h2 fe fe-clock text-body-secondary mb-0"></span>
+                                <i class="fs-4 bi bi-bell text-body-secondary mb-0"></i>
+                                {{-- <span class="h2 fe fe-clock text-body-secondary mb-0"></span> --}}
 
                             </div>
                         </div> <!-- / .row -->
                     </div>
-                </div> --}}
+                </div>
 
             </div>
         </div>
