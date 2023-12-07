@@ -29,13 +29,15 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ url('mous') }}">MOU</a></li>
+                        @if (Auth::user()->role === 1)
+                            <li class="breadcrumb-item"><a href="{{ url('mous') }}">MOU</a></li>
+                        @endif
                         <li class="breadcrumb-item active" aria-current="page">Show MOU</li>
                     </ol>
                 </nav>
             </div>
             <div class="col-md-3" style="text-align: right!important;">
-                <a href="{{ url('mous') }}" class="btn btn-primary"><i class="bi bi-back"></i> Back</a>
+                <a href="{{ URL::previous() }}" class="btn btn-primary"><i class="bi bi-back"></i> Back</a>
             </div>
         </div>
 

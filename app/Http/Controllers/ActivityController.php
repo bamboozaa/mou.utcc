@@ -50,7 +50,8 @@ class ActivityController extends Controller
 
         session()->flash('success', 'Activity created successfully.');
 
-        return redirect()->to('mous/' . $mou_id);
+        // return redirect()->to('mous/' . $mou_id);
+        return redirect()->back();
     }
 
     /**
