@@ -42,7 +42,7 @@
                             </tr>
                             <tr>
                                 <th class="text-end">{{ __('หน่วยงาน :') }}</th>
-                                <th class="text-end">{{ __('สิทธิ์ผู้ใช้งานระบบ :') }}</th>
+
                                 <td>
                                     @php
                                         $department = trim(old('name', $user->department));
@@ -53,17 +53,21 @@
                                     @endphp
                                     {{ $department }}
                                 </td>
-                                <tr>
-                                    <th class="text-end">{{ __('อีเมล์ :') }}</th>
-                                    <td>{{ old('name', $user->email) }}</td>
-                                    <td>
-                                        @if (old('name', $user->role === 0))
-                                            {{ __('ผู้ใช้งานระบบ') }}
-                                        @elseif (old('name', $user->role === 1))
-                                            {{ __('ผู้ดูแลระบบ') }}
-                                        @endif
-                                    </td>
-                                </tr>
+                            <tr>
+                                <th class="text-end">{{ __('อีเมล์ :') }}</th>
+                                <td>{{ old('name', $user->email) }}</td>
+
+                            </tr>
+                            <tr>
+                                <th class="text-end">{{ __('สิทธิ์ผู้ใช้งานระบบ :') }}</th>
+                                <td>
+                                    @if (old('name', $user->role === 0))
+                                        {{ __('ผู้ใช้งานระบบ') }}
+                                    @elseif (old('name', $user->role === 1))
+                                        {{ __('ผู้ดูแลระบบ') }}
+                                    @endif
+                                </td>
+                            </tr>
                             </tr>
                         </table>
 
