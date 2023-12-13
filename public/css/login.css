@@ -1,0 +1,25 @@
+/* Import Poppins fonts */
+
+@font-face {
+    font-family: 'Kanit-Regular';
+    src: url(../fonts/Kanit-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Kanit-Medium';
+    src: url(../fonts/Kanit-Medium.ttf);
+}
+
+@font-face {
+    font-family: 'Kanit-Bold';
+    src: url(../fonts/Kanit-Bold.ttf);
+}
+
+* {
+    padding: 0;
+    font-family: 'Kanit-Regular' !important;
+}
+
+input[type="text"], input[type="password"] {
+    background-color: #fff !important
+}

@@ -1,21 +1,26 @@
-@extends('layouts.app')
+@extends('layouts.app-login')
 
 @section('importcss')
     @parent
-    {{ Html::style('css/main2.css') }}
+    {{ Html::style('css/login.css') }}
 @stop
 
 @section('content')
 <div class="container">
-    <div style="padding: 100px 0">
+    <div style="padding: 50px 0">
 
     </div>
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card bg-white">
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <img src="{{ URL::asset('/images/logo.png') }}" class="img-fluid">
+                        </div>
+                    </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
