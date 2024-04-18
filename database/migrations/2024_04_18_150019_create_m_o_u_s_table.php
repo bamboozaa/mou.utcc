@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('ext_department');
             $table->bigInteger('dep_id');
             $table->char('country', 3);
-            $table->dateTime('start_date', $precision = 0);
-            $table->dateTime('end_date', $precision = 0);
+            $table->date('start_date', $precision = 0);
+            $table->date('end_date', $precision = 0);
             $table->Integer('status');
             $table->string('file_path')->nullable();
             $table->timestamps();

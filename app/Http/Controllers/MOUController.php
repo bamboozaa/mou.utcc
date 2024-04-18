@@ -9,6 +9,7 @@ use App\Models\Department;
 use App\Models\Country;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Response;
+use League\Csv\Writer;
 
 class MOUController extends Controller
 {
@@ -150,22 +151,36 @@ class MOUController extends Controller
         $mous = MOU::all();
         $csvFileName = 'mous.csv';
         $headers = [
-            'Content-Encoding' => 'UTF-8',
-            'Content-Type' => 'text/csv',
+            'Content-Type' => 'text/csv; charset=UTF-8',
             'Content-Disposition' => 'attachment; filename="' . $csvFileName . '"',
         ];
 
         $handle = fopen('php://output', 'w');
-        fputcsv($handle, ['MOU No.', 'MOU Year', 'Subject', 'Vendor', 'dep_id', 'country', 'start date', 'end date', 'status']);  // Add more headers as needed
+        fputcsv($handle, ['MOU No.', 'MOU Year', 'Subject', 'Vendor', 'dep_id', 'country', 'start date', 'end date', 'status']);
 
         foreach ($mous as $mou) {
-            fputcsv($handle, [$mou->mou_no, $mou->mou_year, $mou->subject, $mou->ext_department, $mou->dep_id, $mou->country, $mou->start_date, $mou->end_date, $mou->status]);  // Add more fields as needed
+            fputcsv($handle, [$mou->mou_no, $mou->mou_year, $mou->subject, $mou->ext_department, $mou->dep_id, $mou->country, $mou->start_date, $mou->end_date, $mou->status]);
         }
 
         fclose($handle);
 
         return Response::make('', 200, $headers);
     }
+
+    // public function export()
+    // {
+    //     $data = MOU::all();
+
+    //     $csv = Writer::createFromFileObject(new \SplTempFileObject());
+
+    //     $csv->insertOne(['MOU No.', 'MOU Year', 'Subject', 'Vendor', 'dep_id', 'country', 'start date', 'end date', 'status']);
+
+    //     foreach ($data as $item) {
+    //         $csv->insertOne([$item->mou_no, $item->mou_year, $item->subject, $item->ext_department, $item->dep_id, $item->country, $item->start_date, $item->end_date, $item->status]);
+    //     }
+
+    //     $csv->output('export.csv');
+    // }
 
     public function import(Request $request)
     {
@@ -176,9 +191,15 @@ class MOUController extends Controller
             $data = str_getcsv($line);
 
             MOU::create([
-                'name' => $data[0],
-                'description' => $data[1],
-                'price' => $data[2],
+                'mou_no' => $data[0],
+                'mou_year' => $data[1],
+                'subject' => $data[2],
+                'ext_department' => $data[3],
+                'dep_id' => $data[4],
+                'country' => $data[5],
+                'start_date' => $data[6],
+                'end_date' => $data[7],
+                'status' => $data[8],
                 // Add more fields as needed
             ]);
         }

@@ -94,11 +94,11 @@
                         <label for="start_date" class="col-2 col-form-label">วันเริ่มต้น :</label>
                         {{-- {!! Form::datetime-local('start_date', null, ['id' => 'start_date', 'class' => 'form-control my-3']) !!} --}}
                         <div class="col-3">
-                            <input type="datetime-local" class="form-control" name="start_date">
+                            <input type="date" class="form-control" name="start_date">
                         </div>
                         <label for="end_date" class="col-2 col-form-label">วันสิ้นสุด :</label>
                         <div class="col-3">
-                            <input type="datetime-local" class="form-control" name="end_date">
+                            <input type="date" class="form-control" name="end_date">
                         </div>
                         <div class="col-1"></div>
                     </div>
