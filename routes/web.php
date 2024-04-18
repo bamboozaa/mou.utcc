@@ -26,6 +26,7 @@ Route::resource('mous', MOUController::class);
 Route::resource('activities', ActivityController::class);
 
 Route::get('/export-csv', [MOUController::class, 'export'])->name('export.csv');
+Route::post('/import-csv', [MOUController::class, 'import'])->name('import.csv');
 
 
 Auth::routes([

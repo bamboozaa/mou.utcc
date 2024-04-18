@@ -33,11 +33,10 @@
                 </nav>
             </div>
             <div class="col-md-3" style="text-align: right!important;">
-                <a href="{{ route('mous.create') }}" class="btn btn-primary"><i class="bi bi-plus-square"></i> Create New
-                    MOU</a>
+                <a href="{{ route('mous.create') }}" class="btn btn-primary"><i class="bi bi-plus-square me-1"></i>{{ __('Create New') }}</a>
+                <a href="{{ route('export.csv') }}" class="btn btn-primary"><i class="bi bi-filetype-csv me-1"></i>{{ __('Export to CSV') }}</a>
             </div>
         </div>
-
 
         <div class="card bg-white">
             <div class="card-body">
@@ -86,6 +85,17 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+        </div>
+
+        <div class="card bg-white my-3">
+            <div class="card-body">
+                <form action="{{ route('import.csv') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    {{-- <label class="form-label" for="file">Import file CSV</label> --}}
+                    <input type="file" class="form-control mb-3" name="file" accept=".csv">
+                    <button type="submit" class="btn btn-primary">{{ __('Import CSV') }}</button>
+                </form>
             </div>
         </div>
     </div>

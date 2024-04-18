@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Department;
 use App\Models\Country;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Response;
 
 class MOUController extends Controller
 {
@@ -149,19 +150,39 @@ class MOUController extends Controller
         $mous = MOU::all();
         $csvFileName = 'mous.csv';
         $headers = [
+            'Content-Encoding' => 'UTF-8',
             'Content-Type' => 'text/csv',
             'Content-Disposition' => 'attachment; filename="' . $csvFileName . '"',
         ];
 
         $handle = fopen('php://output', 'w');
-        fputcsv($handle, ['MOU No.', 'MOU Year', 'Subject']);  // Add more headers as needed
+        fputcsv($handle, ['MOU No.', 'MOU Year', 'Subject', 'Vendor', 'dep_id', 'country', 'start date', 'end date', 'status']);  // Add more headers as needed
 
-        foreach ($products as $product) {
-            fputcsv($handle, [$product->name, $product->price]);  // Add more fields as needed
+        foreach ($mous as $mou) {
+            fputcsv($handle, [$mou->mou_no, $mou->mou_year, $mou->subject, $mou->ext_department, $mou->dep_id, $mou->country, $mou->start_date, $mou->end_date, $mou->status]);  // Add more fields as needed
         }
 
         fclose($handle);
 
         return Response::make('', 200, $headers);
+    }
+
+    public function import(Request $request)
+    {
+        $file = $request->file('file');
+        $fileContents = file($file->getPathname());
+
+        foreach ($fileContents as $line) {
+            $data = str_getcsv($line);
+
+            MOU::create([
+                'name' => $data[0],
+                'description' => $data[1],
+                'price' => $data[2],
+                // Add more fields as needed
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'CSV file imported successfully.');
     }
 }
