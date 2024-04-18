@@ -25,6 +25,8 @@ Route::resource('departments', DepartmentController::class);
 Route::resource('mous', MOUController::class);
 Route::resource('activities', ActivityController::class);
 
+Route::get('/export-csv', [MOUController::class, 'export'])->name('export.csv');
+
 
 Auth::routes([
     'reset' => false,

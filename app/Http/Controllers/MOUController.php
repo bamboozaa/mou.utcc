@@ -144,4 +144,24 @@ class MOUController extends Controller
     {
         //
     }
+
+    public function export() {
+        $mous = MOU::all();
+        $csvFileName = 'mous.csv';
+        $headers = [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename="' . $csvFileName . '"',
+        ];
+
+        $handle = fopen('php://output', 'w');
+        fputcsv($handle, ['MOU No.', 'MOU Year', 'Subject']);  // Add more headers as needed
+
+        foreach ($products as $product) {
+            fputcsv($handle, [$product->name, $product->price]);  // Add more fields as needed
+        }
+
+        fclose($handle);
+
+        return Response::make('', 200, $headers);
+    }
 }
