@@ -23,7 +23,15 @@ class MOUController extends Controller
     public function index()
     {
         $MOUs = MOU::all();
-        return view('mou.index', compact('MOUs'));
+        $departments = Department::pluck('dep_name', 'dep_id');
+        return view('mou.index', compact('MOUs', 'departments'));
+    }
+
+    public function show_dep(Request $request)
+    {
+        $departments = Department::pluck('dep_name', 'dep_id');
+        $MOUs = MOU::where('dep_id', $request->input('dep_id'))->get();
+        return view('mou.index', compact('MOUs', 'departments'));
     }
 
     /**
