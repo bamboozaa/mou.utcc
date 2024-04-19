@@ -189,37 +189,21 @@
 
             </div>
         </div>
-<hr>
+        {{-- <hr>
         <div class="header-body">
             <div class="row align-items-end">
                 <div class="col">
-
-                    {{-- <!-- Pretitle -->
-                    <h6 class="header-pretitle">
-                        Overview
-                    </h6> --}}
-
-                    <!-- Title -->
                     <h1 class="header-title">
                         <i class="bi bi-list"></i>{{ __(' รายการ MOU') }}
                     </h1>
 
                 </div>
-                {{-- <div class="col-auto">
-
-                    <!-- Button -->
-                    <a href="#!" class="btn btn-primary lift">
-                        Create Report
-                    </a>
-
-                </div> --}}
-            </div> <!-- / .row -->
+            </div>
         </div>
 
         <div class="row justify-content-center mt-3">
             <div class="col-md-12">
                 <div class="card bg-white">
-                    {{-- <div class="card-header">{{ __('รายการ MOU') }}</div> --}}
                     <div class="card-body">
                         <div class="table-responsive mt-3">
                             <table class="table table-bordered table-hover">
@@ -265,7 +249,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 @endsection
 
