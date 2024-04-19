@@ -40,7 +40,7 @@
 
         <div class="card bg-white">
             <div class="card-body">
-                <div class="table-responsive mt-3">
+                <div class="table-responsive">
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
