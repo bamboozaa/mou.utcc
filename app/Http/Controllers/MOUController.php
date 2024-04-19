@@ -148,61 +148,57 @@ class MOUController extends Controller
     }
 
     public function export() {
+        // ดึงข้อมูลจากฐานข้อมูล
         $mous = MOU::all();
-        $csvFileName = 'mous.csv';
-        $headers = [
-            'Content-Type' => 'text/csv; charset=UTF-8',
-            'Content-Disposition' => 'attachment; filename="' . $csvFileName . '"',
-        ];
 
-        $handle = fopen('php://output', 'w');
-        fputcsv($handle, ['MOU No.', 'MOU Year', 'Subject', 'Vendor', 'dep_id', 'country', 'start date', 'end date', 'status']);
+        // กำหนดชื่อไฟล์ CSV ที่จะส่งออก
+        $csvFileName = 'mous.csv';
+
+        // เปิดไฟล์ CSV สำหรับเขียนข้อมูล
+        $handle = fopen($csvFileName, 'w');
+        fputcsv($handle, ['MOU No.', 'MOU Year', 'Subject', 'Vendor', 'dep_id', 'country', 'start date', 'end date', 'file path', 'mou_type', 'status']);
 
         foreach ($mous as $mou) {
-            fputcsv($handle, [$mou->mou_no, $mou->mou_year, $mou->subject, $mou->ext_department, $mou->dep_id, $mou->country, $mou->start_date, $mou->end_date, $mou->status]);
+            // แปลงข้อมูลเป็น TIS-620
+            $line = array_map('iconv', array_fill(0, count([$mou->mou_no, $mou->mou_year, $mou->subject, $mou->ext_department, $mou->dep_id, $mou->country, $mou->start_date, $mou->end_date, $mou->file_path, $mou->mou_type, $mou->status]), 'UTF-8'), array_fill(0, count([$mou->mou_no, $mou->mou_year, $mou->subject, $mou->ext_department, $mou->dep_id, $mou->country, $mou->start_date, $mou->end_date, $mou->file_path, $mou->mou_type, $mou->status]), 'TIS-620'), [$mou->mou_no, $mou->mou_year, $mou->subject, $mou->ext_department, $mou->dep_id, $mou->country, $mou->start_date, $mou->end_date, $mou->file_path, $mou->mou_type, $mou->status]);
+            fputcsv($handle, $line);
         }
 
+        // ปิดไฟล์ CSV
         fclose($handle);
 
-        return Response::make('', 200, $headers);
+        // ส่งคืนไฟล์ CSV สำหรับดาวน์โหลด
+        return response()->download($csvFileName)->deleteFileAfterSend(true);
+
+        // return Response::make('', 200, $headers);
     }
-
-    // public function export()
-    // {
-    //     $data = MOU::all();
-
-    //     $csv = Writer::createFromFileObject(new \SplTempFileObject());
-
-    //     $csv->insertOne(['MOU No.', 'MOU Year', 'Subject', 'Vendor', 'dep_id', 'country', 'start date', 'end date', 'status']);
-
-    //     foreach ($data as $item) {
-    //         $csv->insertOne([$item->mou_no, $item->mou_year, $item->subject, $item->ext_department, $item->dep_id, $item->country, $item->start_date, $item->end_date, $item->status]);
-    //     }
-
-    //     $csv->output('export.csv');
-    // }
 
     public function import(Request $request)
     {
         $file = $request->file('file');
-        $fileContents = file($file->getPathname());
+        $fileContents = fopen($file->getRealPath(), 'r');
 
-        foreach ($fileContents as $line) {
-            $data = str_getcsv($line);
+        while (($line = fgetcsv($fileContents, 1000, ',')) !== false) {
+            // แปลงข้อมูลจาก TIS-620 เป็น UTF-8
+            $line = array_map('iconv', array_fill(0, count($line), 'TIS-620'), array_fill(0, count($line), 'UTF-8'), $line);
 
+            // สร้างและบันทึกข้อมูล
             MOU::create([
-                'mou_no' => $data[0],
-                'mou_year' => $data[1],
-                'subject' => $data[2],
-                'ext_department' => $data[3],
-                'dep_id' => $data[4],
-                'country' => $data[5],
-                'start_date' => $data[6],
-                'end_date' => $data[7],
-                'status' => $data[8],
-                // Add more fields as needed
+                'mou_no' => $line[0],
+                'mou_year' => $line[1],
+                'subject' => $line[2],
+                'ext_department' => $line[3],
+                'dep_id' => $line[4],
+                'country' => $line[5],
+                'start_date' => $line[6],
+                'end_date' => $line[7],
+                'file_path' => $line[8],
+                'mou_type' => $line[9],
+                'status' => $line[10],
             ]);
         }
+
+        fclose($fileContents);
 
         return redirect()->back()->with('success', 'CSV file imported successfully.');
     }

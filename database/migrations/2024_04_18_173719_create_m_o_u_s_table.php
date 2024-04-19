@@ -21,8 +21,9 @@ return new class extends Migration
             $table->char('country', 3);
             $table->date('start_date', $precision = 0);
             $table->date('end_date', $precision = 0);
-            $table->Integer('status');
             $table->string('file_path')->nullable();
+            $table->integer('mou_type')->nullable();
+            $table->Integer('status');
             $table->timestamps();
         });
     }

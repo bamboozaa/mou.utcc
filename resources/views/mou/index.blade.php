@@ -46,7 +46,7 @@
                             <tr>
                                 <th scope="col" class="text-center text-nowrap">เลขที่/ปี</th>
                                 <th scope="col" class="text-nowrap">เรื่อง</th>
-                                <th scope="col" class="text-nowrap">หน่วยงานต้นเรื่อง</th>
+                                <th scope="col" class="text-nowrap">{{ __('หน่วยงานต้นเรื่อง') }}</th>
                                 <th scope="col" class="text-nowrap">วันที่ประกาศ</th>
                                 <th scope="col" class="text-nowrap">วันสิ้นสุด</th>
                                 <th scope="col" class="text-nowrap text-center">Download</th>
@@ -62,7 +62,7 @@
                                     <tr>
                                         <td class="text-center">{{ $MOU->mou_no . '/' . $MOU->mou_year }}</td>
                                         <td>{{ $MOU->subject }}</td>
-                                        <td>{{ $MOU->department_name['dep_name'] }}</td>
+                                        <td class="text-nowrap">{{ $MOU->department_name['dep_name'] }}</td>
                                         <td>{{ \Carbon\Carbon::parse($MOU->start_date)->format('d/m/Y') }}</td>
                                         <td>{{ \Carbon\Carbon::parse($MOU->end_date)->format('d/m/Y') }}</td>
                                         <td class="text-center"><a href="{{ url('uploads/' . $MOU->file_path) }}"

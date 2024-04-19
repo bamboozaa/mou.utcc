@@ -47,7 +47,7 @@
                             </span>
                         </div>
                         <div class="col-auto">
-                            {!! Form::text('mou_year', $currentYear, ['class' => 'form-control', 'readonly']) !!}
+                            {!! Form::text('mou_year', $currentYear+543, ['class' => 'form-control', 'readonly']) !!}
                         </div>
                     </div>
                     <div class="my-3 row">
@@ -69,7 +69,7 @@
                     </div>
                     <div class="row my-3">
                         <div class="col-1"></div>
-                        <label for="departments" class="col-2 col-form-label">หน่วยงานต้นเรื่อง :</label>
+                        <label for="departments" class="col-2 col-form-label">{{ __('หน่วยงานต้นเรื่อง :') }}</label>
                         <div class="col-auto">
                             {!! Form::select('dep_id', $departments, null, [
                                 'class' => 'form-select',
