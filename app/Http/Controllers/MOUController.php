@@ -25,7 +25,7 @@ class MOUController extends Controller
         // $MOUs = MOU::all();
         $departments = Department::pluck('dep_name', 'dep_id');
         if (is_null($request->input('dep_id')) && is_null($request->input('start_date')) && is_null($request->input('end_date'))) {
-            $MOUs = MOU::latest()->get();
+            $MOUs = MOU::all()->sortByDesc('created_at')->sortByDesc('updated_at');
         } else if (!is_null($request->input('dep_id')) && is_null($request->input('start_date')) && is_null($request->input('end_date'))) {
             $MOUs = MOU::where('dep_id', $request->input('dep_id'))->latest()->get();
         } else if (!is_null($request->input('dep_id')) && !is_null($request->input('start_date')) && is_null($request->input('end_date'))) {
