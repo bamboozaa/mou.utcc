@@ -42,14 +42,13 @@
             <div class="col-md-9">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">MOU</li>
                     </ol>
                 </nav>
             </div>
             <div class="col-md-3" style="text-align: right!important;">
-                <a href="{{ route('mous.create') }}" class="btn btn-primary"><i
-                        class="bi bi-plus-square me-1"></i>{{ __('Create New') }}</a>
+                <a href="{{ route('mous.create') }}" class="btn btn-primary"><i class="bi bi-plus-square me-1"></i>{{ __('Create New') }}</a>
                 {{-- <a href="{{ route('export.csv') }}" class="btn btn-primary"><i class="bi bi-filetype-csv me-1"></i>{{ __('Export to CSV') }}</a> --}}
             </div>
         </div>
@@ -59,7 +58,7 @@
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover">
                         <thead>
-                            <form method="POST" action="{{ route('mous.show_dep') }}" enctype="multipart/form-data">
+                            <form method="GET" action="{{ route('mous.index') }}" enctype="multipart/form-data">
                                 @csrf
                                 <section class="pb-4">
                                     <div class="container">
@@ -68,11 +67,23 @@
                                                 {!! Form::select(
                                                     'dep_id', $departments, null,
                                                     [
-                                                        'class' => 'form-select border-0 mb-1 px-4 py-4 rounded shadow',
+                                                        'class' => 'form-select py-3 rounded shadow',
                                                         'placeholder' => '--- กรุณาเลือก หน่วยงานต้นเรื่อง ---',
                                                         'id' => 'dep_id',
                                                     ],
                                                 ) !!}
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="form-floating">
+                                                    <input type="date" class="form-control rounded shadow" name="start_date" id="start_date">
+                                                    <label for="start_date">{{ __('Start Date') }}</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="form-floating">
+                                                    <input type="date" class="form-control rounded shadow" name="end_date" id="end_date">
+                                                    <label for="end_date">{{ __('Expire Date') }}</label>
+                                                </div>
                                             </div>
                                             <div class="col-lg-3 d-grid">
                                                 <div class="card border-0">

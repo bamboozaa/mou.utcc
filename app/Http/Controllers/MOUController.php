@@ -13,27 +13,49 @@ use League\Csv\Writer;
 
 class MOUController extends Controller
 {
-    public function __construct() {
-        $this->middleware('auth');
-    }
+    // public function __construct() {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $MOUs = MOU::all();
+        // $MOUs = MOU::all();
         $departments = Department::pluck('dep_name', 'dep_id');
+        if (is_null($request->input('dep_id')) && is_null($request->input('start_date')) && is_null($request->input('end_date'))) {
+            $MOUs = MOU::all();
+        } else if (!is_null($request->input('dep_id')) && is_null($request->input('start_date')) && is_null($request->input('end_date'))) {
+            $MOUs = MOU::where('dep_id', $request->input('dep_id'))->get();
+        } else if (!is_null($request->input('dep_id')) && !is_null($request->input('start_date')) && is_null($request->input('end_date'))) {
+            $MOUs = MOU::where('dep_id', $request->input('dep_id'))->where('start_date', '>=', $request->input('start_date'))->get();
+        } else if (!is_null($request->input('dep_id')) && !is_null($request->input('start_date')) && !is_null($request->input('end_date'))) {
+            $MOUs = MOU::where('dep_id', $request->input('dep_id'))->where('start_date', '>=', $request->input('start_date'))->where('end_date', '<=', $request->input('end_date'))->get();
+        } else if (is_null($request->input('dep_id')) && !is_null($request->input('start_date')) && is_null($request->input('end_date'))) {
+            $MOUs = MOU::where('start_date', '>=', $request->input('start_date'))->get();
+        } else if (is_null($request->input('dep_id')) && is_null($request->input('start_date')) && !is_null($request->input('end_date'))) {
+            $MOUs = MOU::where('end_date', '<=', $request->input('end_date'))->get();
+        } else if (is_null($request->input('dep_id')) && !is_null($request->input('start_date')) && !is_null($request->input('end_date'))) {
+            $MOUs = MOU::where('start_date', '>=', $request->input('start_date'))->where('end_date', '<=', $request->input('end_date'))->get();
+        }
+
         return view('mou.index', compact('MOUs', 'departments'));
     }
 
-    public function show_dep(Request $request)
+    /* public function show_dep(Request $request)
     {
         $departments = Department::pluck('dep_name', 'dep_id');
+        if (is_null($request->input('dep_id')) && is_null($request->input('start_date')) && is_null($request->input('end_date'))) {
+            $MOUs = MOU::all();
+        } else if (!is_null($request->input('dep_id'))) {
+            $MOUs = MOU::where('dep_id', $request->input('dep_id'))->get();
+        }
+
         is_null($request->input('dep_id')) ? $MOUs = MOU::all() : $MOUs = MOU::where('dep_id', $request->input('dep_id'))->get();
-        //$MOUs = MOU::where('dep_id', $request->input('dep_id'))->get();
+        $MOUs = MOU::where('dep_id', $request->input('dep_id'))->get();
         return view('mou.index', compact('MOUs', 'departments'));
-    }
+    } */
 
     /**
      * Show the form for creating a new resource.

@@ -22,11 +22,9 @@ Route::get('/', function () {
 
 // Department Routes
 Route::resource('departments', DepartmentController::class);
-Route::resource('mous', MOUController::class);
 Route::resource('activities', ActivityController::class);
 
-Route::get('/export-csv', [MOUController::class, 'export'])->name('export.csv');
-Route::post('/import-csv', [MOUController::class, 'import'])->name('import.csv');
+
 
 
 Auth::routes([
@@ -39,5 +37,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/users', App\Http\Controllers\UserController::class);
 
 Route::group(['middleware' => 'auth'], function() {
-    Route::post('mous/show_dep', [App\Http\Controllers\MOUController::class, 'show_dep'])->name('mous.show_dep');
+    Route::resource('mous', MOUController::class);
+    Route::get('/export-csv', [MOUController::class, 'export'])->name('export.csv');
+    Route::post('/import-csv', [MOUController::class, 'import'])->name('import.csv');
 });
