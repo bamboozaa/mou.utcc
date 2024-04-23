@@ -82,7 +82,7 @@
                                             <div class="col-lg-3">
                                                 <div class="form-floating">
                                                     <input type="date" class="form-control rounded shadow" name="end_date" id="end_date">
-                                                    <label for="end_date">{{ __('Expire Date') }}</label>
+                                                    <label for="end_date">{{ __('End Date') }}</label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 d-grid">
