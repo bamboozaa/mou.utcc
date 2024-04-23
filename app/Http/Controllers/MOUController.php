@@ -24,23 +24,48 @@ class MOUController extends Controller
     {
         // $MOUs = MOU::all();
         $departments = Department::pluck('dep_name', 'dep_id');
-        if (is_null($request->input('dep_id')) && is_null($request->input('start_date')) && is_null($request->input('end_date'))) {
-            $MOUs = MOU::all()->sortByDesc('created_at')->sortByDesc('updated_at');
-        } else if (!is_null($request->input('dep_id')) && is_null($request->input('start_date')) && is_null($request->input('end_date'))) {
-            $MOUs = MOU::where('dep_id', $request->input('dep_id'))->orderBy('created_at', 'desc')->orderBy('updated_at', 'desc')->get();
-        } else if (!is_null($request->input('dep_id')) && !is_null($request->input('start_date')) && is_null($request->input('end_date'))) {
-            $MOUs = MOU::where('dep_id', $request->input('dep_id'))->where('start_date', '>=', $request->input('start_date'))->orderBy('created_at', 'desc')->orderBy('updated_at', 'desc')->get();
-        } else if (!is_null($request->input('dep_id')) && !is_null($request->input('start_date')) && !is_null($request->input('end_date'))) {
-            $MOUs = MOU::where('dep_id', $request->input('dep_id'))->where('start_date', '>=', $request->input('start_date'))->where('end_date', '<=', $request->input('end_date'))->orderBy('created_at', 'desc')->orderBy('updated_at', 'desc')->get();
-        } else if (is_null($request->input('dep_id')) && !is_null($request->input('start_date')) && is_null($request->input('end_date'))) {
-            $MOUs = MOU::where('start_date', '>=', $request->input('start_date'))->orderBy('created_at', 'desc')->orderBy('updated_at', 'desc')->get();
-        } else if (is_null($request->input('dep_id')) && is_null($request->input('start_date')) && !is_null($request->input('end_date'))) {
-            $MOUs = MOU::where('end_date', '<=', $request->input('end_date'))->orderBy('created_at', 'desc')->orderBy('updated_at', 'desc')->get();
-        } else if (is_null($request->input('dep_id')) && !is_null($request->input('start_date')) && !is_null($request->input('end_date'))) {
-            $MOUs = MOU::where('start_date', '>=', $request->input('start_date'))->where('end_date', '<=', $request->input('end_date'))->orderBy('created_at', 'desc')->orderBy('updated_at', 'desc')->get();
-        } else if (!is_null($request->input('dep_id')) && is_null($request->input('start_date')) && !is_null($request->input('end_date'))) {
-            $MOUs = MOU::where('dep_id', $request->input('dep_id'))->where('end_date', '<=', $request->input('end_date'))->orderBy('created_at', 'desc')->orderBy('updated_at', 'desc')->get();
-        }
+
+        #1
+        if (is_null($request->input('dep_id')) && is_null($request->input('start_date')) && is_null($request->input('end_date')) && is_null($request->input('active_date'))) $MOUs = MOU::all()->sortByDesc('created_at')->sortByDesc('updated_at');
+
+        #2
+        if (!is_null($request->input('dep_id')) && is_null($request->input('start_date')) && is_null($request->input('end_date')) && is_null($request->input('active_date'))) $MOUs = MOU::where('dep_id', $request->input('dep_id'))->orderBy('created_at', 'desc')->orderBy('updated_at', 'desc')->get();
+
+        #3
+        if (!is_null($request->input('dep_id')) && !is_null($request->input('start_date')) && !is_null($request->input('end_date')) && is_null($request->input('active_date'))) $MOUs = MOU::where('dep_id', $request->input('dep_id'))->where('start_date', '>=', $request->input('start_date'))->where('end_date', '<=', $request->input('end_date'))->orderBy('created_at', 'desc')->orderBy('updated_at', 'desc')->get();
+
+        #4
+        if (!is_null($request->input('dep_id')) && is_null($request->input('start_date')) && !is_null($request->input('end_date')) && is_null($request->input('active_date'))) $MOUs = MOU::where('dep_id', $request->input('dep_id'))->where('end_date', '<=', $request->input('end_date'))->orderBy('created_at', 'desc')->orderBy('updated_at', 'desc')->get();
+
+        #5
+        if (is_null($request->input('dep_id')) && is_null($request->input('start_date')) && !is_null($request->input('end_date')) && is_null($request->input('active_date'))) $MOUs = MOU::where('end_date', '<=', $request->input('end_date'))->orderBy('created_at', 'desc')->orderBy('updated_at', 'desc')->get();
+
+        #6
+        if (!is_null($request->input('dep_id')) && is_null($request->input('start_date')) && is_null($request->input('end_date')) && !is_null($request->input('active_date'))) $MOUs = MOU::where('dep_id', $request->input('dep_id'))->where('end_date', '>=', $request->input('active_date'))->orderBy('created_at', 'desc')->orderBy('updated_at', 'desc')->get();
+
+        #7
+        if (is_null($request->input('dep_id')) && is_null($request->input('start_date')) && is_null($request->input('end_date')) && !is_null($request->input('active_date'))) $MOUs = MOU::where('end_date', '>=', $request->input('active_date'))->orderBy('created_at', 'desc')->orderBy('updated_at', 'desc')->get();
+
+        #8
+        if (is_null($request->input('dep_id')) && !is_null($request->input('start_date')) && !is_null($request->input('end_date')) && is_null($request->input('active_date'))) $MOUs = MOU::where('start_date', '>=', $request->input('start_date'))->where('end_date', '<=', $request->input('end_date'))->orderBy('created_at', 'desc')->orderBy('updated_at', 'desc')->get();
+
+        // if (is_null($request->input('dep_id')) && is_null($request->input('start_date')) && is_null($request->input('end_date'))) {
+        //     $MOUs = MOU::all()->sortByDesc('created_at')->sortByDesc('updated_at');
+        // } else if (!is_null($request->input('dep_id')) && is_null($request->input('start_date')) && is_null($request->input('end_date'))) {
+        //     $MOUs = MOU::where('dep_id', $request->input('dep_id'))->orderBy('created_at', 'desc')->orderBy('updated_at', 'desc')->get();
+        // } else if (!is_null($request->input('dep_id')) && !is_null($request->input('start_date')) && is_null($request->input('end_date'))) {
+        //     $MOUs = MOU::where('dep_id', $request->input('dep_id'))->where('start_date', '>=', $request->input('start_date'))->orderBy('created_at', 'desc')->orderBy('updated_at', 'desc')->get();
+        // } else if (!is_null($request->input('dep_id')) && !is_null($request->input('start_date')) && !is_null($request->input('end_date'))) {
+        //     $MOUs = MOU::where('dep_id', $request->input('dep_id'))->where('start_date', '>=', $request->input('start_date'))->where('end_date', '<=', $request->input('end_date'))->orderBy('created_at', 'desc')->orderBy('updated_at', 'desc')->get();
+        // } else if (is_null($request->input('dep_id')) && !is_null($request->input('start_date')) && is_null($request->input('end_date'))) {
+        //     $MOUs = MOU::where('start_date', '>=', $request->input('start_date'))->orderBy('created_at', 'desc')->orderBy('updated_at', 'desc')->get();
+        // } else if (is_null($request->input('dep_id')) && is_null($request->input('start_date')) && !is_null($request->input('end_date'))) {
+        //     $MOUs = MOU::where('end_date', '<=', $request->input('end_date'))->orderBy('created_at', 'desc')->orderBy('updated_at', 'desc')->get();
+        // } else if (is_null($request->input('dep_id')) && !is_null($request->input('start_date')) && !is_null($request->input('end_date'))) {
+        //     $MOUs = MOU::where('start_date', '>=', $request->input('start_date'))->where('end_date', '<=', $request->input('end_date'))->orderBy('created_at', 'desc')->orderBy('updated_at', 'desc')->get();
+        // } else if (!is_null($request->input('dep_id')) && is_null($request->input('start_date')) && !is_null($request->input('end_date'))) {
+        //     $MOUs = MOU::where('dep_id', $request->input('dep_id'))->where('end_date', '<=', $request->input('end_date'))->orderBy('created_at', 'desc')->orderBy('updated_at', 'desc')->get();
+        // }
 
         return view('mou.index', compact('MOUs', 'departments'));
     }
