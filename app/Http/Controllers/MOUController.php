@@ -171,6 +171,7 @@ class MOUController extends Controller
                 'status' => $request->input('status'),
                 'start_date' => $request->input('start_date'),
                 'end_date' => $request->input('end_date'),
+                'mou_type' => $request->input('mou_type'),
                 'file_path' => $file_name,
             ]
         );

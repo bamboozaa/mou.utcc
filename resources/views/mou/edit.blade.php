@@ -76,6 +76,18 @@
 
             <div class="row my-3">
                 <div class="col-1"></div>
+                <label for="mou_type" class="col-2 col-form-label">ประเภท :</label>
+                <div class="col-auto">
+                    {!! Form::select('mou_type', [106 => 'MOU', 107 => 'Agreement'], $MOU->mou_type, [
+                        'class' => 'form-select',
+                        'placeholder' => 'Please Select ...',
+                    ]) !!}
+                </div>
+                <div class="col-1"></div>
+            </div>
+
+            <div class="row my-3">
+                <div class="col-1"></div>
                 <label for="country" class="col-2 col-form-label">ประเทศ :</label>
                 <div class="col-auto">
                     {!! Form::select('ct_code', $countries, $MOU->country, [
