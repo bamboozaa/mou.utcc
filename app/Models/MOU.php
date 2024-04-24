@@ -21,6 +21,7 @@ class MOU extends Model
         'end_date',
         'status',
         'file_path',
+        'mou_type',
     ];
     protected $primaryKey = 'mou_id';
 

@@ -39,7 +39,7 @@
                         <div class="col-1"></div>
                         <label for="mou_no" class="col-2 col-form-label">เลขที่ :</label>
                         <div class="col-auto">
-                            {!! Form::text('mou_no', null, ['class' => 'form-control']) !!}
+                            {!! Form::text('mou_no', $mou_id, ['class' => 'form-control', 'readonly']) !!}
                         </div>
                         <div class="col-auto">
                             <span class="form-text">
@@ -47,7 +47,12 @@
                             </span>
                         </div>
                         <div class="col-auto">
-                            {!! Form::text('mou_year', $currentYear+543, ['class' => 'form-control', 'readonly']) !!}
+                            {!! Form::text('mou_year', $currentYearTH, ['class' => 'form-control', 'readonly']) !!}
+                        </div>
+                        <div class="col-auto">
+                            <label class="form-label">
+                                {{ __('เลขล่าสุด ') }} <span style="color: red"> {{ $mou_id_last . "/" . $mou_year_last }}</span>
+                            </label>
                         </div>
                     </div>
                     <div class="my-3 row">
@@ -72,6 +77,17 @@
                         <label for="departments" class="col-2 col-form-label">{{ __('หน่วยงานต้นเรื่อง :') }}</label>
                         <div class="col-auto">
                             {!! Form::select('dep_id', $departments, null, [
+                                'class' => 'form-select',
+                                'placeholder' => 'Please Select ...',
+                            ]) !!}
+                        </div>
+                        <div class="col-1"></div>
+                    </div>
+                    <div class="row my-3">
+                        <div class="col-1"></div>
+                        <label for="mou_type" class="col-2 col-form-label">ประเภท :</label>
+                        <div class="col-auto">
+                            {!! Form::select('mou_type', [106 => 'MOU', 107 => 'Agreement'], null, [
                                 'class' => 'form-select',
                                 'placeholder' => 'Please Select ...',
                             ]) !!}
