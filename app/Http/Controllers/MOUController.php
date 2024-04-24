@@ -86,6 +86,7 @@ class MOUController extends Controller
             'subject' => 'required',
             'ext_department' => 'required',
             'status' => 'required',
+            'mou_type' => 'required',
             'file' => 'nullable|file|mimes:pdf,doc,docx|max:2048'
         ]);
 
@@ -111,6 +112,7 @@ class MOUController extends Controller
             'start_date' => $request->input('start_date'),
             'end_date' => $request->input('end_date'),
             'file_path' => $file_name ?? null,
+            'mou_type' => $request->input('mou_type'),
         ]);
 
         session()->flash('success', 'MOU created successfully.');
