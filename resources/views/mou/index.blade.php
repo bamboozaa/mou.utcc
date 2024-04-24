@@ -94,7 +94,14 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-3">
+                                                <select class = "form-select py-3 rounded shadow" name="mou_year" >
+                                                    <option value="">{{ __('--- กรุณาเลือก ปี ---') }}</option>
+                                                    @for ($year = $minYear->mou_year; $year <= $maxYear->mou_year; $year++)
+                                                        <option value="{{ $year }}">{{ $year }}</option>
+                                                    @endfor
+                                                </select>
 
+                                                {{-- {{ $maxYear->mou_year }} --}}
                                             </div>
                                             <div class="col-lg-3">
 

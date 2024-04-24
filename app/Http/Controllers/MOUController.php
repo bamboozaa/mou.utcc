@@ -49,7 +49,13 @@ class MOUController extends Controller
         #8
         if (is_null($request->input('dep_id')) && !is_null($request->input('start_date')) && !is_null($request->input('end_date')) && is_null($request->input('active_date'))) $MOUs = MOU::where('start_date', '>=', $request->input('start_date'))->where('end_date', '<=', $request->input('end_date'))->orderBy('created_at', 'desc')->orderBy('updated_at', 'desc')->get();
 
-        return view('mou.index', compact('MOUs', 'departments'));
+        #9
+        if (is_null($request->input('dep_id')) && is_null($request->input('start_date')) && is_null($request->input('end_date')) && is_null($request->input('active_date')) && !is_null($request->input('mou_year'))) $MOUs = MOU::where('mou_year', $request->input('mou_year'))->orderBy('mou_no', 'asc')->get();
+
+        $minYear = $mou_query = MOU::select('mou_year')->orderBy('mou_year', 'ASC') ->first();
+        $maxYear = $mou_query = MOU::select('mou_year')->orderBy('mou_year', 'DESC') ->first();
+
+        return view('mou.index', compact('MOUs', 'departments', 'minYear', 'maxYear'));
     }
 
     /**
