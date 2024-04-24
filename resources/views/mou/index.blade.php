@@ -86,10 +86,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-3">
-                                                <div class="form-floating">
-                                                    <input type="date" class="form-control rounded shadow" name="active_date" id="active_date">
-                                                    <label for="active_date">{{ __('Active Date') }}</label>
-                                                </div>
+
                                             </div>
                                         </div>
                                         <div class="row">
@@ -100,14 +97,18 @@
                                                         <option value="{{ $year }}">{{ $year }}</option>
                                                     @endfor
                                                 </select>
-
-                                                {{-- {{ $maxYear->mou_year }} --}}
                                             </div>
                                             <div class="col-lg-3">
-
+                                                <div class="form-floating">
+                                                    <input type="date" class="form-control rounded shadow" name="active_date" id="active_date">
+                                                    <label for="active_date">{{ __('Active Date') }}</label>
+                                                </div>
                                             </div>
                                             <div class="col-lg-3">
-
+                                                <div class="form-floating">
+                                                    <input type="date" class="form-control rounded shadow" name="end_date" id="end_date">
+                                                    <label for="end_date">{{ __('Expired Date') }}</label>
+                                                </div>
                                             </div>
                                             <div class="col-lg-3 d-grid">
                                                 <div class="card border-0">
