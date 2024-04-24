@@ -39,7 +39,7 @@
                         <div class="col-1"></div>
                         <label for="mou_no" class="col-2 col-form-label">เลขที่ :</label>
                         <div class="col-auto">
-                            {!! Form::text('mou_no', $mou_id, ['class' => 'form-control', 'readonly']) !!}
+                            {!! Form::text('mou_no', $mou_no, ['class' => 'form-control', 'readonly']) !!}
                         </div>
                         <div class="col-auto">
                             <span class="form-text">
@@ -51,7 +51,7 @@
                         </div>
                         <div class="col-auto">
                             <label class="form-label">
-                                {{ __('เลขล่าสุด ') }} <span style="color: red"> {{ $mou_id_last . "/" . $mou_year_last }}</span>
+                                {{ __('เลขล่าสุด ') }} <span style="color: red"> {{ $mou_no_last . "/" . $mou_year_last }}</span>
                             </label>
                         </div>
                     </div>

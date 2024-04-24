@@ -66,20 +66,20 @@ class MOUController extends Controller
         // $currentYearTH = now()->year+543;
         $currentYearTH = Carbon::now()->year + 543;
         $exists = MOU::where('mou_year', $currentYearTH)->exists();
-        $mou_query = MOU::select('mou_id', 'mou_year')->orderBy('mou_id', 'DESC') ->orderBy('mou_year', 'DESC') ->first();
-        $mou_id_last = $mou_query->mou_id;
+        $mou_query = MOU::select('mou_no', 'mou_year')->orderBy('mou_year', 'DESC')->orderBy('mou_no', 'DESC') ->first();
+        $mou_no_last = $mou_query->mou_no;
         $mou_year_last = $mou_query->mou_year;
 
         if ($exists) {
-            $mou_id = $mou_query->mou_id + 1;
+            $mou_no = $mou_query->mou_no + 1;
         } else {
-            $mou_id = 1;
+            $mou_no = 1;
         }
 
         $departments = Department::pluck('dep_name', 'dep_id');
         $countries = Country::pluck('ct_nameENG', 'ct_code');
         // $currentYear = Carbon::now()->year;
-        return view('mou.create', compact('departments', 'countries', 'currentYearTH', 'mou_id', 'mou_id_last', 'mou_year_last'));
+        return view('mou.create', compact('departments', 'countries', 'currentYearTH', 'mou_no', 'mou_no_last', 'mou_year_last'));
     }
 
     /**
