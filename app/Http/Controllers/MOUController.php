@@ -65,6 +65,18 @@ class MOUController extends Controller
     {
         // $currentYearTH = now()->year+543;
         $currentYearTH = Carbon::now()->year + 543;
+
+        $currentYear = Carbon::now()->year;
+        $startDate = $currentYear . '-08-01';
+        $endDate = $currentYear + 1 . '-07-31';
+        $current_date = Carbon::now();
+
+        if ($current_date >= $startDate) {
+            $currentYearTH = $currentYearTH + 1;
+        } else if ($current_date <= $startDate) {
+            $currentYearTH;
+        }
+
         $exists = MOU::where('mou_year', $currentYearTH)->exists();
         $mou_query = MOU::select('mou_no', 'mou_year')->orderBy('mou_year', 'DESC')->orderBy('mou_no', 'DESC') ->first();
         $mou_no_last = $mou_query->mou_no;
