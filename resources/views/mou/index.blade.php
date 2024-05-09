@@ -140,7 +140,13 @@
                                     <tr>
                                         <td class="text-center">{{ $MOU->mou_no . '/' . $MOU->mou_year }}</td>
                                         <td>{{ $MOU->subject }}</td>
-                                        <td class="text-nowrap">{{ $MOU->department_name['dep_name'] }}</td>
+                                        <td class="text-nowrap">
+                                            @if (isset($MOU->department_name['dep_name']))
+                                                {{ $MOU->department_name['dep_name'] }}
+                                            @else
+                                                {{ __("") }}
+                                            @endif
+                                        </td>
                                         <td>{{ \Carbon\Carbon::parse($MOU->start_date)->format('d/m/Y') }}</td>
                                         <td>{{ \Carbon\Carbon::parse($MOU->end_date)->format('d/m/Y') }}</td>
                                         <td class="text-center"><a href="{{ url('uploads/' . $MOU->file_path) }}"
