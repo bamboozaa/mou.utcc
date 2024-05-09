@@ -73,7 +73,7 @@
 
                                 <!-- Heading -->
                                 <span class="h2 mb-0">
-                                    {{ count($MOUs) }}
+                                    {{ count($mous) }}
                                 </span>
 
                                 <!-- Badge -->
