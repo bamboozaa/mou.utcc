@@ -20,6 +20,9 @@ Route::get('/', function () {
     return redirect('/home');
 });
 
+Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index']);
+Route::get('/search/results', [\App\Http\Controllers\SearchController::class, 'advance'])->name('search');
+
 // Department Routes
 Route::resource('departments', DepartmentController::class);
 Route::resource('activities', ActivityController::class);

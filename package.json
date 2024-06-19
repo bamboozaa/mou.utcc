@@ -16,6 +16,7 @@
     },
     "dependencies": {
         "bootstrap-datepicker": "^1.10.0",
+        "datatables.net-bs5": "^2.0.8",
         "flatpickr": "^4.6.13",
         "jquery": "^3.7.1",
         "sweetalert2": "^11.7.32"

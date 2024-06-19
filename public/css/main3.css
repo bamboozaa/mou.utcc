@@ -1,0 +1,199 @@
+/* Import Poppins fonts */
+
+@font-face {
+    font-family: 'Heavent-Regular';
+    src: url(../fonts/DB-Heavent-v3.2.1.ttf);
+}
+
+@font-face {
+    font-family: 'Heavent-Medium';
+    src: url(../fonts/DB-Heavent-Med-It-v3.2.1.ttf);
+}
+
+@font-face {
+    font-family: 'Heavent-Bold';
+    src: url(../fonts/DB-Heavent-Bd-v3.2.1.ttf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Heavent-Regular';
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+
+.navbar {
+    background-color: #FFF;
+    /* border: 1px solid #eee; */
+}
+
+.navbar .navbar-brand {
+    font-family: 'Heavent-Bold';
+    font-size: 30px;
+    color: #52734D;
+    /* margin: 0; */
+    padding: 0 15px;
+}
+
+.navbar .navbar-collapse ul li {
+    margin: 0 20px;
+}
+
+.navbar .navbar-collapse ul li a {
+    /* padding: 0; */
+    padding-bottom: 5px;
+    color: #000000;
+}
+
+.navbar .navbar-collapse ul li a.active {
+    border-bottom: 2px solid #52734D;
+    /* color: #000000; */
+}
+
+.navbar .navbar-collapse ul li a:hover {
+    border-bottom: 2px solid #52734D;
+}
+
+.bg-img-1 {
+    background: url(../images/background/rm222batch5-kul-03.jpg) center center / cover no-repeat;
+}
+
+.p-t-165 {
+    padding-top: 165px;
+}
+
+.p-b-100 {
+    padding-bottom: 100px;
+}
+
+.page-wrapper {
+    min-height: 100vh;
+}
+
+.wrapper {
+    margin: 0 auto;
+}
+
+.wrapper--w720 {
+    max-width: 720px;
+}
+
+.card-3 {
+    background: rgba(17, 25, 54, 0.9);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.row-space {
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.label2 {
+    font-size: 22px;
+    color: #555;
+    text-transform: capitalize;
+    display: block;
+    font-weight: 700;
+}
+
+.input--style-1 {
+    font-size: 16px;
+    padding: 5px 0;
+    padding-top: 0px;
+    text-transform: uppercase;
+    color: #808080;
+    font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
+}
+
+input, textarea {
+    outline: none;
+    margin: 0;
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    width: 100%;
+    font-size: 18px;
+    font-family: inherit;
+}
+
+input[type="text" i] {
+    padding-block: 1px;
+    padding-inline: 2px;
+}
+
+.input-group-symbol {
+    position: absolute;
+    font-size: 24px;
+    color: #ccc;
+    left: 18px;
+    bottom: 10px;
+}
+
+.zmdi {
+    display: inline-block;
+    font: normal normal normal 14px / 1 'Material-Design-Iconic-Font';
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.input-group2 {
+    position: relative;
+    margin-bottom: 15px;
+    background: #ffffff;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding: 9px 48px;
+    padding-bottom: 3px;
+    padding-right: 20px;
+}
+
+.col-21 {
+    width: -webkit-calc((100% - 10px) / 2);
+    width: -moz-calc((100% - 10px) / 2);
+    width: calc((100% - 10px) / 2);
+}
+
+.row2 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.btn-submit {
+    display: block;
+    width: 100%;
+    line-height: 50px;
+    font-family: inherit;
+    background: #00ad5f;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    text-transform: capitalize;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+button {
+    cursor: pointer;
+}
