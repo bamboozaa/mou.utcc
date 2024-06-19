@@ -23,7 +23,16 @@
 
 @section('content')
 {{-- {{ dd($data) }} --}}
+
     <div class="container">
+        <div class="row mb-3">
+            <div class="col-md-9">
+
+            </div>
+            <div class="col-md-3" style="text-align: right!important;">
+                <a href="{{ url()->previous() }}" class="btn btn-primary"><i class="bi bi-arrow-left-circle me-2"></i>Back</a>
+            </div>
+        </div>
         <table id="example" class="table table-striped table-hover table-bordered" style="width: 100%">
             <thead>
                 <tr>
