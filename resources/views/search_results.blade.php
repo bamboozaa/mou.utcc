@@ -47,7 +47,7 @@
                 <tr>
                     <td><a href="{{ url('uploads/' . $mou->file_path) }}" target="_blank">{{ $mou->mou_no . '/' . $mou->mou_year }}</a></td>
                     <td>{{ $mou->subject }}</td>
-                    <td class="text-nowrap">{{ $mou->start_date }}</td>
+                    <td class="text-nowrap">{{ \Carbon\Carbon::parse($mou->start_date)->format('d/m/Y') }}</td>
                     <td class="text-nowrap">{{ $mou->department_name['dep_name'] }}</td>
                 </tr>
             @endforeach
