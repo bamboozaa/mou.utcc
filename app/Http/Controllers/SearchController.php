@@ -37,15 +37,15 @@ class SearchController extends Controller
         }
 
         if( $request->mou_no){
-            $data = MOU::where('mou_no', $request->mou_no)->latest()->get();
+            $data = MOU::where('mou_no', $request->mou_no)->orderBy('mou_no', 'asc')->get();
         }
 
         if ($request->mou_year) {
-            $data = MOU::where('mou_year', $request->mou_year)->latest()->get();
+            $data = MOU::where('mou_year', $request->mou_year)->orderByRaw('LENGTH(mou_no) ASC')->orderBy('mou_no')->get();
         }
 
         if ($request->mou_no && $request->mou_year) {
-            $data = MOU::where('mou_no', $request->mou_no)->where('mou_year', $request->mou_year)->latest()->get();
+            $data = MOU::where('mou_no', $request->mou_no)->where('mou_year', $request->mou_year)->orderBy('mou_no', 'asc')->get();
         }
 
         if( $request->start_date){
