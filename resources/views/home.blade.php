@@ -57,8 +57,8 @@
                 </div> --}}
             </div> <!-- / .row -->
         </div>
-        <div class="row justify-content-center my-4">
-            <div class="col-12 col-lg-6 col-xl">
+        <div class="row justify-content-start my-4">
+            <div class="col-12 col-lg-3 col-xl-3">
 
                 <!-- Value  -->
                 <div class="card bg-white">
@@ -93,102 +93,7 @@
                 </div>
 
             </div>
-            <div class="col-12 col-lg-6 col-xl">
 
-                <!-- Hours -->
-                <div class="card bg-white">
-                    <div class="card-body">
-                        <div class="row align-items-center gx-0">
-                            <div class="col">
-
-                                <!-- Title -->
-                                <h6 class="text-uppercase text-body-secondary mb-2">
-                                    Total hours
-                                </h6>
-
-                                <!-- Heading -->
-                                <span class="h2 mb-0">
-                                    763.5
-                                </span>
-
-                            </div>
-                            <div class="col-auto">
-
-                                <!-- Icon -->
-                                <i class="fs-4 bi bi-briefcase text-body-secondary mb-0"></i>
-                                {{-- <span class="h2 fe fe-briefcase text-body-secondary mb-0"></span> --}}
-
-                            </div>
-                        </div> <!-- / .row -->
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-12 col-lg-6 col-xl">
-
-                <!-- Exit -->
-                <div class="card bg-white">
-                    <div class="card-body">
-                        <div class="row align-items-center gx-0">
-                            <div class="col">
-
-                                <!-- Title -->
-                                <h6 class="text-uppercase text-body-secondary mb-2">
-                                    Exit %
-                                </h6>
-
-                                <!-- Heading -->
-                                <span class="h2 mb-0">
-                                    35.5%
-                                </span>
-
-                            </div>
-                            <div class="col-auto">
-
-                                <!-- Chart -->
-                                <div class="chart chart-sparkline">
-                                    <canvas class="chart-canvas" id="sparklineChart" width="75" height="35"
-                                        style="display: block; box-sizing: border-box; height: 35px; width: 75px;"></canvas>
-                                </div>
-
-                            </div>
-                        </div> <!-- / .row -->
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-12 col-lg-6 col-xl">
-
-                <!-- Time -->
-                <div class="card bg-white">
-                    <div class="card-body">
-                        <div class="row align-items-center gx-0">
-                            <div class="col">
-
-                                <!-- Title -->
-                                <h6 class="text-uppercase text-body-secondary mb-2">
-                                    Avg. Time
-                                </h6>
-
-                                <!-- Heading -->
-                                <span class="h2 mb-0">
-                                    2:37
-                                </span>
-
-                            </div>
-                            <div class="col-auto">
-
-                                <!-- Icon -->
-                                <i class="fs-4 bi bi-bell text-body-secondary mb-0"></i>
-                                {{-- <span class="h2 fe fe-clock text-body-secondary mb-0"></span> --}}
-
-                            </div>
-                        </div> <!-- / .row -->
-                    </div>
-                </div>
-
-            </div>
-        </div>
         {{-- <hr>
         <div class="header-body">
             <div class="row align-items-end">
