@@ -1,4 +1,4 @@
-@extends('layouts.app2')
+@extends('layouts.app4')
 @section('title', 'MOU')
 
 @section('importcss')
@@ -88,8 +88,8 @@
     </div>
 @endsection
 
-@section('footer')
+{{-- @section('footer')
 
     @include('footer')
 
-@endsection
+@endsection --}}

@@ -17,10 +17,10 @@ use App\Http\Controllers\ActivityController;
 */
 
 Route::get('/', function () {
-    return redirect('/home');
+    return redirect()->route('search-index');
 });
 
-Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index']);
+Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index'])->name('search-index');
 Route::get('/search/results', [\App\Http\Controllers\SearchController::class, 'advance'])->name('search');
 
 // Department Routes
