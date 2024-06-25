@@ -33,12 +33,12 @@
                     </ol>
                 </nav>
             </div>
-            <div class="col-md-3" style="text-align: right!important;">
+            {{-- <div class="col-md-3" style="text-align: right!important;">
                 <a href="{{ route('users.create') }}" class="btn btn-primary mb-2">
                     <i class="bi bi-plus-square"></i>
                     {{ __(' Create New Department') }}
                 </a>
-            </div>
+            </div> --}}
         </div>
 
         <div class="card bg-white">

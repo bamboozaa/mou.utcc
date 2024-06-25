@@ -26,10 +26,10 @@ class MOUController extends Controller
         $departments = Department::pluck('dep_name', 'dep_id');
 
         #1
-        if (is_null($request->input('dep_id')) && is_null($request->input('start_date')) && is_null($request->input('end_date')) && is_null($request->input('active_date'))) $MOUs = MOU::all()->sortByDesc('created_at')->sortByDesc('updated_at');
+        if (is_null($request->input('dep_id')) && is_null($request->input('start_date')) && is_null($request->input('end_date')) && is_null($request->input('active_date'))) $MOUs = MOU::all()->sortBy('mou_no')->sortBy('mou_year');
 
         #2
-        if (!is_null($request->input('dep_id')) && is_null($request->input('start_date')) && is_null($request->input('end_date')) && is_null($request->input('active_date'))) $MOUs = MOU::where('dep_id', $request->input('dep_id'))->orderBy('created_at', 'desc')->orderBy('updated_at', 'desc')->get();
+        if (!is_null($request->input('dep_id')) && is_null($request->input('start_date')) && is_null($request->input('end_date')) && is_null($request->input('active_date'))) $MOUs = MOU::where('dep_id', $request->input('dep_id'))->orderBy('mou_no', 'asc')->orderBy('mou_year', 'asc')->get();
 
         #3
         if (!is_null($request->input('dep_id')) && !is_null($request->input('start_date')) && !is_null($request->input('end_date')) && is_null($request->input('active_date'))) $MOUs = MOU::where('dep_id', $request->input('dep_id'))->where('start_date', '>=', $request->input('start_date'))->where('end_date', '<=', $request->input('end_date'))->orderBy('created_at', 'desc')->orderBy('updated_at', 'desc')->get();
