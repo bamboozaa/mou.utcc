@@ -11,4 +11,5 @@ import DataTable from 'datatables.net-bs5';
 let table = new DataTable('#example', {
     // config options...
     // pageLength: 12
+    ordering: false
 });

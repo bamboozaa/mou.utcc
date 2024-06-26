@@ -18,26 +18,26 @@ class SearchController extends Controller
     public function advance(Request $request)
     {
         if (is_null($request->subject) && is_null($request->start_date) && is_null($request->end_date) && is_null($request->mou_no) && is_null($request->mou_year) && is_null($request->dep_id) ) {
-            $data = MOU::all()->sortByDesc('created_at')->sortByDesc('updated_at');
+            $data = MOU::all()->sortBy('mou_no')->sortByDesc('mou_year');
         }
         if( $request->subject){
-            $data = MOU::where('subject', 'LIKE', "%" . $request->subject . "%")->latest()->get();
+            $data = MOU::where('subject', 'LIKE', "%" . $request->subject . "%")->orderBy('mou_year', 'asc')->orderBy('mou_no', 'asc')->get();
         }
 
         if( $request->subject && $request->start_date && $request->end_date){
-            $data = MOU::where('subject', 'LIKE', "%" . $request->subject . "%")->where('start_date', '>=', $request->start_date)->where('end_date', '<=', $request->end_date)->latest()->get();
+            $data = MOU::where('subject', 'LIKE', "%" . $request->subject . "%")->where('start_date', '>=', $request->start_date)->where('end_date', '<=', $request->end_date)->orderBy('mou_year', 'asc')->orderBy('mou_no', 'asc')->get();
         }
 
         if( $request->subject && $request->start_date){
-            $data = MOU::where('subject', 'LIKE', "%" . $request->subject . "%")->where('start_date', '=', $request->start_date)->latest()->get();
+            $data = MOU::where('subject', 'LIKE', "%" . $request->subject . "%")->where('start_date', '=', $request->start_date)->orderBy('mou_year', 'asc')->orderBy('mou_no', 'asc')->get();
         }
 
         if( $request->subject && $request->end_date){
-            $data = MOU::where('subject', 'LIKE', "%" . $request->subject . "%")->where('end_date', '=', $request->end_date)->latest()->get();
+            $data = MOU::where('subject', 'LIKE', "%" . $request->subject . "%")->where('end_date', '=', $request->end_date)->orderBy('mou_year', 'asc')->orderBy('mou_no', 'asc')->get();
         }
 
         if( $request->mou_no){
-            $data = MOU::where('mou_no', $request->mou_no)->orderBy('mou_no', 'asc')->get();
+            $data = MOU::where('mou_no', $request->mou_no)->orderBy('mou_year', 'asc')->orderBy('mou_no', 'asc')->get();
         }
 
         if ($request->mou_year) {
@@ -45,23 +45,23 @@ class SearchController extends Controller
         }
 
         if ($request->mou_no && $request->mou_year) {
-            $data = MOU::where('mou_no', $request->mou_no)->where('mou_year', $request->mou_year)->orderBy('mou_no', 'asc')->get();
+            $data = MOU::where('mou_no', $request->mou_no)->where('mou_year', $request->mou_year)->orderBy('mou_year', 'asc')->orderBy('mou_no', 'asc')->get();
         }
 
         if( $request->start_date){
-            $data = MOU::where('start_date', '=', $request->start_date)->latest()->get();
+            $data = MOU::where('start_date', '=', $request->start_date)->orderBy('mou_year', 'asc')->orderBy('mou_no', 'asc')->get();
         }
 
         if( $request->end_date){
-            $data = MOU::where('end_date', '=', $request->end_date)->latest()->get();
+            $data = MOU::where('end_date', '=', $request->end_date)->orderBy('mou_year', 'asc')->orderBy('mou_no', 'asc')->get();
         }
 
         if( $request->start_date && $request->end_date ){
-            $data = MOU::where('start_date', '>=', $request->start_date)->where('end_date', '<=', $request->end_date)->latest()->get();
+            $data = MOU::where('start_date', '>=', $request->start_date)->where('end_date', '<=', $request->end_date)->orderBy('mou_year', 'asc')->orderBy('mou_no', 'asc')->get();
         }
 
         if($request->dep_id){
-            $data = MOU::where('dep_id', '=', $request->dep_id)->latest()->get();
+            $data = MOU::where('dep_id', '=', $request->dep_id)->orderBy('mou_year', 'asc')->orderBy('mou_no', 'asc')->get();
         }
 
         // if (!isset($data)) {
